@@ -1,45 +1,59 @@
 /*******************************************************************************
-DGM for cross-site imputation simulation study
+DGM
 *******************************************************************************/
 
-capture program drop dgm_het
-program define dgm_het, rclass
-   
-   syntax [,  nstud(integer 10) n(real 1000) ///
-               pi(real .3) ///
-               a(real 1) b(real 1) c(real 1) ///
-               tau_pi(real 0) tau_a(real 0) tau_b(real 0) tau_c(real 0) ///
-               sx(real 1) sy(real 1) ]
+capture program drop dgm
+program define dgm, rclass
+    
+    syntax [, nstud(integer 10) n(real 1000) ///
+            pi0(real .3) pi1(real .3) ///
+            a0(real 1) a1(real 1) ///
+            b0(real 1) b1(real 1) ///
+            c0(real 1) c1(real 1) ///
+            tau_pi(real 0) tau_a(real 0) ///
+            tau_b(real 0) tau_c(real 0) ///
+            sx0(real 1) sx1(real 1) ///
+            sy0(real 1) sy1(real 1)]
 
     drop _all
 
-    // total N
+    // total N and study id
     local totN = `n'*`nstud'
-    set obs `totN'
+    qui set obs `totN'
+    gen stud = ceil(_n/`n')
 
-    // study id
-    gen int s = ceil(_n/`n')
+    local source = round(ceil(`nstud'/2), 1)
+    gen ind = (stud > `source')
 
-    gen pi_s = .
-    gen a_s = .
-    gen b_s = .
-    gen c_s = .
-    gen sx_s = .
-    gen sy_s = .
+    // study-specific parameters 
+    qui gen pi_s = .
+    qui gen a_s = .
+    qui gen b_s = .
+    qui gen c_s = .
+    qui gen sx_s = .
+    qui gen sy_s = .
 
-    forv j = 1/`nstud' {
-        scalar eta = rnormal(logit(`pi'), `tau_pi')
+    forvalues j = 1/`nstud' {
+        local pimean = cond(`j'<=`source', `pi0', `pi1')
+        local amean = cond(`j'<=`source', `a0', `a1')
+        local bmean = cond(`j'<=`source', `b0', `b1')
+        local cmean = cond(`j'<=`source', `c0', `c1')
+        local sxmean = cond(`j'<=`source', `sx0', `sx1')
+        local symean = cond(`j'<=`source', `sy0', `sy1')
+
+        // draw study-specific values
+        scalar eta = rnormal(logit(`pimean'), `tau_pi')
         scalar pik = invlogit(eta)
-        scalar ak = rnormal(`a', `tau_a')
-        scalar bk = rnormal(`b', `tau_b')
-        scalar ck = rnormal(`c', `tau_c')
+        scalar ak = rnormal(`amean', `tau_a')
+        scalar bk = rnormal(`bmean', `tau_b')
+        scalar ck = rnormal(`cmean', `tau_c')
 
-        qui replace pi_s = pik if s==`j'
-        qui replace a_s = ak if s==`j'
-        qui replace b_s = bk if s==`j'
-        qui replace c_s = ck if s==`j'
-        qui replace sx_s = `sx' if s==`j'
-        qui replace sy_s = `sy' if s==`j'
+        qui replace pi_s = pik if stud==`j'
+        qui replace a_s = ak if stud==`j'
+        qui replace b_s = bk if stud==`j'
+        qui replace c_s = ck if stud==`j'
+        qui replace sx_s = `sxmean' if stud==`j'
+        qui replace sy_s = `symean' if stud==`j'
     }
 
     // DGM
