@@ -13,7 +13,8 @@ program define dgm, rclass
                 tau_pi(real 0) tau_a(real 0) ///
 				tau_b(real 0) tau_c(real 0) ///
                 sx0(real 1) sx1(real 1) ///
-                sy0(real 1) sy1(real 1) /// 
+                sy0(real 1) sy1(real 1) ///
+				tau_lnsx(real 0.1) tau_lnsy(real 0.1) ///
 				alpha0(real 0) alpha1(real 0) tau_alpha(real 0)]
 
     drop _all
@@ -51,19 +52,23 @@ program define dgm, rclass
         scalar bk = rnormal(`bmean', `tau_b')
         scalar ck = rnormal(`cmean', `tau_c')
 		scalar alphak = rnormal(`alphamean', `tau_alpha')
+		scalar lnsxk = rnormal(ln(`sxmean'), `tau_lnsx')
+		scalar lnsyk = rnormal(ln(`symean'), `tau_lnsy')
+		scalar sxk = exp(lnsxk)
+		scalar syk = exp(lnsyk)
 
         qui replace pi_s = pik if s ==`j'
         qui replace a_s = ak if s ==`j'
         qui replace b_s = bk if s ==`j'
         qui replace c_s = ck if s ==`j'
-        qui replace sx_s = `sxmean' if s ==`j'
-        qui replace sy_s = `symean' if s ==`j'
 		qui replace alpha_s = alphak if s == `j'
+		qui replace sx_s = sxk if s == `j'
+		qui replace sy_s = syk if s == `j'
     }
 
     // DGM
     gen z = rbinomial(1, pi_s)
-    gen x = alpha_s + a_s*z + rnormal(0, sx_s)
+    gen x = a_s*z + rnormal(0, sx_s)
     gen y = alpha_s + b_s*x + c_s*z + rnormal(0, sy_s)
 
 end
