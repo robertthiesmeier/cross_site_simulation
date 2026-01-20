@@ -14,7 +14,7 @@ program define dgm, rclass
 				tau_b(real 0) tau_c(real 0) ///
                 sx0(real 1) sx1(real 1) ///
                 sy0(real 1) sy1(real 1) ///
-				tau_lnsx(real 0.1) tau_lnsy(real 0.1) ///
+				tau_lnsx(real 0.15) tau_lnsy(real 0.15) ///
 				alpha0(real 0) alpha1(real 0) tau_alpha(real 0)]
 
     drop _all
