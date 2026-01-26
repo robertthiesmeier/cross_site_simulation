@@ -5,7 +5,7 @@ DGM
 capture program drop dgm
 program define dgm, rclass
     
-    syntax [,  nstud(integer 10) n(real 500) ///
+    syntax [,  nstud(integer 10) n(real 1000) ///
                 pi0(real .3) pi1(real .3) ///
                 a0(real 1) a1(real 1) ///
                 b0(real 1) b1(real 1) ///
@@ -15,7 +15,7 @@ program define dgm, rclass
                 sx0(real 1) sx1(real 1) ///
                 sy0(real 1) sy1(real 1) ///
 				tau_lnsx(real 0.15) tau_lnsy(real 0.15) ///
-				alpha0(real 0) alpha1(real 0) tau_alpha(real 0)]
+				alpha0(real 1) alpha1(real 1) tau_alpha(real 0)]
 
     drop _all
 
