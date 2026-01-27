@@ -1,5 +1,5 @@
 *******************************************************
-// Scenarios: Effect heterogenity/parameter shift
+// Scenarios: parameter shift
 *******************************************************
 
 /*** 1. Prior shift (marginal Z)
