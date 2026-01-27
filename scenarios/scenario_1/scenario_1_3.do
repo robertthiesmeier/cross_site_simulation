@@ -1,14 +1,11 @@
 *******************************************************
-// Scenarios: Effect heterogenity
+// Scenarios: heterogenity
 *******************************************************
 
-*** 1. Between study heterogenity (tau_b)
+*** Between study heterogenity (tau_b)
 	
-*cd "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation"
-
-cd "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2"
-
-run "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2/scenarios_uvma/dgm_final.do"
+// define working directory containing a folder with the latest version of mi_impute_from and a data folder to store simualted datasets
+run "/dgm_final.do"
 
 cap program drop het_scenario 
 program define het_scenario, rclass
