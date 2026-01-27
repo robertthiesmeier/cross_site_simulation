@@ -7,7 +7,7 @@ Important: Define working directories and make sure that the folder structure is
 
 clear all
 
-global nsim = 50
+global nsim = 1000
 global imp = 10
 
 ********************************************************************************
