@@ -36,7 +36,7 @@ program define dgm, rclass
     qui gen sy_s = .
 	qui gen alpha_s = .
 
-    forvalues j = 1/`nstud' {
+    forv j = 1/`nstud' {
         local pimean = cond(`j'<=`source', `pi0', `pi1')
         local amean = cond(`j'<=`source', `a0', `a1')
         local bmean = cond(`j'<=`source', `b0', `b1')
