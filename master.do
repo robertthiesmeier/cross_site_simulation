@@ -1,8 +1,13 @@
 /*
 
 Master file
-
 Simulation study
+
+Important: Define appropriate directory and path for this file to work. 
+Needed: 
+	1. file with scenarios
+	2. file with visualisation code
+	3. folder to save all figures
 
 */ 
 
@@ -17,19 +22,17 @@ global imp = 10
 
 *** Heterogenity ***
 forv k = 1/4{
-	do "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2/scenarios_uvma/scenario_1_`k'.do"
+	do "scenario_1_`k'.do"
 }
  
-
 *** Parameter shift ***
 forv k = 1/4{
-	do "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2/scenarios_uvma/scenario_2_`k'.do"
+	do "scenario_2_`k'.do"
 }
-
 
 *** Parameter shifts + heterogenity ***
 forv k = 1/4{
-	do "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2/scenarios_uvma/scenario_3_`k'.do"
+	do "scenario_3_`k'.do"
 }
 
 ********************************************************************************
@@ -38,12 +41,10 @@ forv k = 1/4{
 
 
 forv k = 1/3 {
-	run "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2/scenarios_uvma/vis_scenario_`k'.do"
-
+	run "vis_scenario_`k'.do"
 }
 
-
-cd "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures"
+cd "/figures"
 
 ********************************************************************************
 *** SCENARIO 1 ****
@@ -74,7 +75,6 @@ graph export cov_sce1_b2.png, replace width(4000)
 ********************************************************************************
 *** SCENARIO 2 ****
 ********************************************************************************
-
 
 *** bias
 graph combine "scenario_2_1_b1" "scenario_2_2_b1" "scenario_2_3_b1" "scenario_2_4_b1", /// 
