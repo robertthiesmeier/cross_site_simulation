@@ -5,7 +5,7 @@ Simualtion analysis (performance measures)
 */ 
 
 clear all 
-cd "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2"
+*** define cd with final datasets in dta format
 
 ********************************************************************************
 ********************************************************************************
