@@ -7,7 +7,7 @@ Important: Define paths!
 */ 
 
 clear all 
-cd "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2"
+** define cd here
 
 /************************
 
@@ -129,7 +129,7 @@ frame sumres{
 		graphregion(color(white)) name(bias_b1, replace)
 }
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_1_b1", replace
+graph save "/figures/scenario_1_1_b1", replace
 
 *** theta_2 ****
 cap frame drop sumres
@@ -224,7 +224,7 @@ frame sumres{
 		graphregion(color(white)) name(bias_b2, replace)
 }
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_1_b2", replace
+graph save "/figures/scenario_1_1_b2", replace
 
 
 *****************
@@ -277,7 +277,7 @@ twoway ///
     title("{bf:Prevalence heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white))  name(cov_b1, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_1_b1", replace
+graph save "/figures/coverage_het_scenario_1_1_b1", replace
 
 *** theta 2 ***
 tempname H
@@ -323,7 +323,7 @@ twoway ///
     title("{bf:Prevalence heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white))  name(cov_b2, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_1_b2", replace
+graph save "/figures/coverage_het_scenario_1_1_b2", replace
  
 ********************************************************************************
 *** Scenario 1_2 ***
@@ -440,7 +440,7 @@ frame sumres{
 }
 
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_2_b1", replace
+graph save "/figures/scenario_1_2_b1", replace
 
 *** theta_2 ****
 cap frame drop sumres
@@ -535,7 +535,7 @@ frame sumres{
 		graphregion(color(white)) name(bias_b2, replace)
 }
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_2_b2", replace
+graph save "/figures/scenario_1_2_b2", replace
 
 
 ******************
@@ -588,7 +588,7 @@ twoway ///
     title("{bf:Confounding path heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white)) name(cov_b1, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_2_b1", replace
+graph save "/figures/coverage_het_scenario_1_2_b1", replace
 
 *** theta 2 ***
 tempname H
@@ -634,7 +634,7 @@ twoway ///
     title("{bf:Confounding path heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white)) name(cov_b2, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_2_b2", replace
+graph save "/figures/coverage_het_scenario_1_2_b2", replace
 
 ********************************************************************************
 *** Scenario 1_3 ***
@@ -750,7 +750,7 @@ frame sumres{
 		graphregion(color(white))  name(bias_b1, replace)
 }
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_3_b1", replace
+graph save "/figures/scenario_1_3_b1", replace
 
 *** theta_2 ****
 cap frame drop sumres
@@ -845,7 +845,7 @@ frame sumres{
 		graphregion(color(white)) name(bias_b2, replace)
 }
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_3_b2", replace
+graph save "/figures/scenario_1_3_b2", replace
 
 
 *******************
@@ -898,7 +898,7 @@ twoway ///
     title("{bf:Effect heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white))  name(cov_b1, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_3_b1", replace
+graph save "/figures/coverage_het_scenario_1_3_b1", replace
 
 *** theta 2 ***
 tempname H
@@ -944,7 +944,7 @@ twoway ///
     title("{bf:Effect heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white))  name(cov_b2, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_3_b2", replace
+graph save "/figures/coverage_het_scenario_1_3_b2", replace
 
 ********************************************************************************
 *** Scenario 1.4 ***
@@ -1060,7 +1060,7 @@ frame sumres{
 		graphregion(color(white))  name(bias_b1, replace)
 }
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_4_b1", replace
+graph save "/figures/scenario_1_4_b1", replace
 
 *** theta_2 ****
 cap frame drop sumres
@@ -1155,7 +1155,7 @@ frame sumres{
 		graphregion(color(white)) name(bias_b2, replace)
 }
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/scenario_1_4_b2", replace
+graph save "/figures/scenario_1_4_b2", replace
 
 *******************
 *** Coverage *** 
@@ -1207,7 +1207,7 @@ twoway ///
     title("{bf:Heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white))  name(cov_b1, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_4_b1", replace
+graph save "/figures/coverage_het_scenario_1_4_b1", replace
 
 *** theta 2 ***
 tempname H
@@ -1253,4 +1253,4 @@ twoway ///
     title("{bf:Heterogeneity}", size(medium) color(black)) ///
     graphregion(color(white)) name(cov_b2, replace)
 
-graph save "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures/coverage_het_scenario_1_4_b2", replace
+graph save "/figures/coverage_het_scenario_1_4_b2", replace
