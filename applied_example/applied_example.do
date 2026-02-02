@@ -1,10 +1,8 @@
-*** Methods ****
-
-// characterization of descriptive statistics, when study bias can be expected or is large
-
-clear all 
-cd "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2"
-run "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/mi_impute_from_v2/scenarios_uvma/dgm_final.do"
+********************************************************************************
+// Applied example 1-3 + figure
+********************************************************************************
+*** !!! define directory and run updated mi_impute_from package !!! ***
+clear  
 
 cap frame drop meta
 frame create meta
@@ -545,24 +543,22 @@ label define scen 1 "Sce1" 2 "Sce2" 3 "Sce3"
 label values scenario scen
 
 reshape long b se, i(scenario) j(method) string
-
 gen met = real(method)
 drop method
 
 gen ll = b - invnormal(.975)*se
 gen ul = b + invnormal(.975)*se
 
-
 forv k = 1/3{
 	tw /// 
 		(scatter met b if scenario == `k' & met== 1, color(gold) msize(large) msymbol(t)) /// 
-		(rcap ll ul met if scenario == `k' & met == 1,  horizontal color(gold)) /// 
+		(rcap ll ul met if scenario == `k' & met == 1, horizontal color(gold)) /// 
 		(scatter met b if scenario == `k' & met== 2, color(cranberry) msize(large) msymbol(s)) /// 
-		(rcap ll ul met if scenario == `k' & met ==2,  horizontal color(cranberry)) /// 
+		(rcap ll ul met if scenario == `k' & met ==2, horizontal color(cranberry)) /// 
 		(scatter met b if scenario == `k' & met== 3, color(eltgreen) msymbol(o) msize(large)) /// 
-		(rcap ll ul met if scenario == `k' & met == 3,  horizontal color(eltgreen)) /// 
+		(rcap ll ul met if scenario == `k' & met == 3, horizontal color(eltgreen)) /// 
 		(scatter met b if scenario == `k' & met== 4, color(midblue) msize(large) msymbol(d)) /// 
-		(rcap ll ul met if scenario == `k' & met == 4,  horizontal color(midblue)), /// 
+		(rcap ll ul met if scenario == `k' & met == 4, horizontal color(midblue)), /// 
 		xline(1, lpattern(solid) lwidth(medthick)) /// 
 		ytitle("") ylab(1 "Ref" 2 "CCA" 3 "NA" 4 "MI", noticks nogrid labsize(small)) /// 
 		xlab(, nogrid labsize(small)) title("{bf: Example `k'}", size(medium)) /// 
@@ -571,63 +567,6 @@ forv k = 1/3{
 }
 
 graph combine fig1 fig2 fig3, xcommon col(3)
-cd "/Users/robert/Library/CloudStorage/OneDrive-KarolinskaInstitutet/PhD/Research/Cross_site_imputation/SIM_study/simulation/figures"
 graph export fig_applied_example.png, replace width(4000)
 
 exit 
-******************************************/
-
-cap program drop sim_characteristics
-program define sim_characteristics, rclass 
-		
-	syntax[ , a1(real 1) c1(real 1) alpha1(real 0) ///
-		tau_b(real 0) tau_pi(real 0) tau_a(real 0) tau_c(real 0) tau_alpha(real 0)]
-	
-	
-	drop _all 
-	
-	dgm, nstud(2) n(500) a1(`a1') c1(`c1') alpha1(`alpha1') ///
-		tau_b(`tau_b') tau_pi(`tau_pi') tau_a(`tau_a') tau_c(`tau_c') tau_alpha(`tau_alpha')
-	
-	su y if s == 1 
-	ret scalar ymean1 = r(mean)
-	ret scalar ysd1 = r(sd)
-	
-	su y if s == 2 
-	ret scalar ymean2 = r(mean)
-	ret scalar ysd2 = r(sd)
-	
-	reg y x if s == 1
-	ret scalar y1beta = _b[x]
-	
-	reg y x if s == 2
-	ret scalar y2beta = _b[x]
-	
-	ranksum x , by(s) porder
-	ret scalar auc = 1-r(porder)
-	
-end 
-
-// Applied example 1: no bias, but heterogeneity
-simulate /// 
-	ymean1 = r(ymean1) ymean2 = r(ymean2) /// 
-	ysd1 = r(ysd1) ysd2 = r(ysd2) /// 
-	y1beta = r(y1beta) y2beta = r(y2beta), /// 
-	reps(1000): sim_characteristics , tau_alpha(0.3) tau_b(0.3) tau_pi(0.3) tau_a(0.3) tau_c(0.3)  
-	
-violinplot ymean1 ymean2, overlay left title("Mean of Y") name(meany, replace)
-violinplot ysd1 ysd2, overlay left name(sdy, replace)
-violinplot y1beta y2beta, overlay left name(betay, replace)
-
- 
-// No heterogeneity but systematic shifts
-simulate /// 
-	ymean1 = r(ymean1) ymean2 = r(ymean2) /// 
-	ysd1 = r(ysd1) ysd2 = r(ysd2) /// 
-	y1beta = r(y1beta) y2beta = r(y2beta), /// 
-	reps(1000): sim_characteristics , a1(3) c1(3) 
-	
-violinplot ymean1 ymean2, overlay left title("Mean of Y") name(meany, replace)
-violinplot ysd1 ysd2, overlay left name(sdy, replace)
-violinplot y1beta y2beta, overlay left name(betay, replace)
-
