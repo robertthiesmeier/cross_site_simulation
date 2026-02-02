@@ -4,8 +4,8 @@ Use the current version of the ```mi_impute_from``` package (see [here](https://
 
 This repo contains: 
 1. Data-generating mechanism (DGM) used in the simulation
-2. all scenarios that were simulated
-3. Code to reproduce the figures
+2. All scenarios that were simulated
+3. Complete datasets for all results presented in the manuscript
 
 Improtant: a working directory and appropriate path have to be defined for the scenarios and master file.
 
