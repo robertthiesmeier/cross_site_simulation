@@ -2,7 +2,7 @@
 
 
 Visualisations Scenario 1
-
+Important: Define paths! 
 
 */ 
 
