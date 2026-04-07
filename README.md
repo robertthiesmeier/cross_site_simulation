@@ -7,7 +7,7 @@ This repo contains:
 2. All scenarios that were simulated + applied example
 3. Complete datasets for all results presented in the manuscript
 
-Improtant: a working directory and appropriate path have to be defined for the scenarios and master file.
+:warning: a working directory and appropriate path have to be defined for the scenarios and master file.
 
 🖥️ **Software** 🖥️
 
