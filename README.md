@@ -1,6 +1,8 @@
 # Transportability of missing data models across study sites for research synthesis
 Stata code for the simulation study to evaluate the performance of cross-site imputation in federated research settings. 
-Use the current version of the ```mi_impute_from``` package (see [here](https://github.com/robertthiesmeier/mi_impute_from_version.git)). 
+Use the current version of the ```mi_impute_from``` package (see [here](https://github.com/robertthiesmeier/mi_impute_from_version.git)).
+
+A preprint to the manuscript is available [here](https://www.medrxiv.org/content/10.64898/2026.03.09.26347913v1).
 
 This repo contains: 
 1. Data-generating mechanism (DGM) used in the simulation
