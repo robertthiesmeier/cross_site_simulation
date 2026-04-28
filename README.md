@@ -11,9 +11,9 @@ This repo contains:
 
 :label: The documentation of `mi impute from` is available in [here](https://journals.sagepub.com/doi/10.1177/1536867X251398605). A preprint to the manuscript is available [here](https://www.medrxiv.org/content/10.64898/2026.03.09.26347913v1).
 
-📢 **Presentations** 📢
+📢 **Presentations**
 
-:label: Various aspects of cross-site imputation were presneted at the: 
+Methodological and applied aspects of cross-site imputation were presented at the: 
 1. Royal Statistical Society International Conference in Brighton, UK, 2024
 2. International Biometric Society Conference in Atlanta, GA, USA, 2024
 3. International Society for Pharmocoepidemiology in Washington DC, 2025
